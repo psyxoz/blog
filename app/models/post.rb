@@ -7,4 +7,8 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
 
   default_scope { order('created_at DESC') }
+
+  after_create do
+    Resque.enqueue(SubscriptionJob, self.id)
+  end
 end
