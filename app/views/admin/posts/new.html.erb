@@ -1,0 +1,10 @@
+<h2>Posts</h2>
+
+<div class="block">
+  <%= form_for(@post, url: admin_posts_path) do |form| %>
+    <fieldset class="clearfix form-horizontal">
+      <legend>New</legend>
+      <%= render 'form', f: form %>
+    </fieldset>
+  <% end %>
+</div>
