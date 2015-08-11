@@ -1,0 +1,15 @@
+<h2><%= @post.title %></h2>
+
+<div class="block">
+  <%= markdown(@post.content).html_safe %>
+</div>
+
+<h5>Comments</h5>
+<% if comments.any? %>
+  <% comments.each do |comment| %>
+    <div>
+      <%= comment.content %>
+    </div>
+  <% end %>
+  <%= paginate comments %>
+<% end %>

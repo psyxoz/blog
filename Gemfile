@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sprockets-rails'
 gem 'kaminari'
 gem 'friendly_id', require: 'friendly_id'
+gem 'truncate_html'
+gem 'redcarpet'
 
 gem 'devise'
 gem 'cancan'

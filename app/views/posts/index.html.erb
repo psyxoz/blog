@@ -1,0 +1,14 @@
+<h2>Posts</h2>
+
+<div class="block">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div>
+        <h3><%= link_to post.title, post_path(post) %></h3>
+        <%= truncate_html markdown(post.content), length: 300 %>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+    <%= paginate @posts %>
+  <% end %>
+</div>

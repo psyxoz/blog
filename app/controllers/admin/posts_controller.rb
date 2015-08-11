@@ -1,5 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_filter :load_post, only: [:edit, :update, :destroy]
+  
   def index
     @posts = Post.page(params[:page])
   end

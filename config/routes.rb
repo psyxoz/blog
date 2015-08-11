@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :posts, only: [:index, :show]
+  resources :comments, only: :create
+  resources :subscriptions, only: [:create, :destroy]
 
   namespace :admin do
     match '/' => 'posts#index', via: :get
