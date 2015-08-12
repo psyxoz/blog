@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     comment.user = current_user
 
     if comment.save
+      expire_fragment("post_#{comment.post_id}_comments")
       render json: { success: true }, status: :created
     else
       render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity

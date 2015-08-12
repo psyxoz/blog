@@ -1,5 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_filter :load_post, only: [:edit, :update, :destroy]
+  after_filter :cleanup_cached_pages
   
   def index
     @posts = Post.page(params[:page])
@@ -23,6 +24,7 @@ class Admin::PostsController < Admin::BaseController
 
   def update
     if @post.update_attributes(post_params)
+      expire_fragment("post_#{@post.id}_content")
       flash[:notice] = 'Post updated'
       redirect_to action: :index
     else
@@ -42,5 +44,9 @@ class Admin::PostsController < Admin::BaseController
 
   def load_post
     @post = Post.friendly.find(params[:id])
+  end
+
+  def cleanup_cached_pages
+    expire_page controller: 'posts', action: 'index'
   end
 end
