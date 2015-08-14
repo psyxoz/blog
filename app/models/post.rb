@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :delete_all
 
-  validates :title, presence: true
+  validates :title, :content, presence: true
 
   default_scope { order('created_at DESC') }
 

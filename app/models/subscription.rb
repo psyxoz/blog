@@ -1,9 +1,7 @@
 class Subscription < ActiveRecord::Base
-  validates :email, :token, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, email: true
 
-  before_validation do
-    if token.blank?
-      self.token = SecureRandom.uuid
-    end
+  before_create do
+    self.token = SecureRandom.uuid
   end
 end

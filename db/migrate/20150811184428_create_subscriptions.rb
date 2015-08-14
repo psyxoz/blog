@@ -7,5 +7,6 @@ class CreateSubscriptions < ActiveRecord::Migration
     end
 
     add_index :subscriptions, :token
+    add_index :subscriptions, :email, unique: true
   end
 end

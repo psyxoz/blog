@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150811184428) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "subscriptions", ["email"], name: "index_subscriptions_on_email", unique: true, using: :btree
   add_index "subscriptions", ["token"], name: "index_subscriptions_on_token", using: :btree
 
   create_table "users", force: :cascade do |t|
