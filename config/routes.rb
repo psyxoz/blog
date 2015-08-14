@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "home#index"
+  root to: "posts#index"
 
   resources :posts, only: [:index, :show] do
     get '(page/:page)', action: :index, on: :collection, as: ''
+    resources :comments, only: :create
   end
 
-  resources :comments, only: :create
   resources :subscriptions, only: :create do
     get :destroy, on: :collection
   end

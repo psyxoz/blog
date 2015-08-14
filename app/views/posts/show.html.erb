@@ -6,12 +6,14 @@
   <% end %>
 </div>
 
-<h5>Comments</h5>
-<% cache("post_#{@post.id}_comments") do %>
-  <% @post.comments.find_each do |comment| %>
-    <div>
-      <%= comment.content %>
-    </div>
+<h4>Comments</h4>
+<%= render 'comment_form' if current_user.present? %>
+<div id="comments">
+  <% cache("post_#{@post.id}_comments") do %>
+    <% @post.comments.find_each do |comment| %>
+      <div>
+        <%= comment.content %>
+      </div>
+    <% end %>
   <% end %>
-  <%= paginate comments %>
-<% end %>
+</div>

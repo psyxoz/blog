@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   before_filter :load_post, only: [:edit, :update, :destroy]
-  after_filter :cleanup_cached_pages
+  after_filter :cleanup_cached_pages, only: [:create, :update]
   
   def index
     @posts = Post.page(params[:page])

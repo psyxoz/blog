@@ -8,10 +8,40 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<header class="navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <nav role="navigation">
+      <%= link_to "Blog", root_path, class: "navbar-brand" %>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"> <%= link_to "Posts", posts_path %></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <a href="#" data-toggle="modal" data-target="#subscription_modal">Subscribe</a>
+          </li>
+          <% if current_user %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
 
-<%= yield %>
+<%= render 'application/subscription_form' %>
+
+<div class="container">
+  <div class="content">
+    <%= "<p class='notice'>#{notice}</p>".html_safe if notice %>
+    <%= "<p class='alert'>#{alert}</p>".html_safe if alert %>
+
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>
