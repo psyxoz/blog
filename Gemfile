@@ -23,11 +23,12 @@ gem 'truncate_html'
 gem 'redcarpet'
 
 gem 'devise'
-gem 'cancan'
 
 gem 'resque'
 
 gem 'actionpack-page_caching'
+
+gem 'decent_exposure'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

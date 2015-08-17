@@ -1,6 +1,8 @@
 class SubscriptionsController < ApplicationController
+  expose(:subscription, attributes: :subscription_params,
+         finder: :find_by_token, finder_parameter: :token)
+
   def create
-    subscription = Subscription.new(subscription_params)
     if subscription.save
       render json: { success: true }, status: :created
     else
@@ -9,7 +11,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    subscription = Subscription.find_by_token(params[:token])
     subscription.destroy
     redirect_to root_path, flash: { notice: 'Your subscription was removed' }
   end

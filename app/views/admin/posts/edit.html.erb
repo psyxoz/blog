@@ -1,7 +1,7 @@
 <h2>Posts</h2>
 
 <div class="block">
-  <%= form_for(@post, url: admin_post_path(@post)) do |form| %>
+  <%= form_for(post, url: admin_post_path(post)) do |form| %>
     <fieldset class="clearfix form-horizontal">
       <legend>Edit</legend>
       <%= render 'form', f: form %>

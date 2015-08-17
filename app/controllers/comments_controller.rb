@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!, :load_post
+  before_filter :authenticate_user!
+  expose(:post, finder: :find_by_slug, finder_parameter: :post_id)
 
   def create
-    comment = @post.comments.new(comment_params)
+    comment = post.comments.new(comment_params)
     comment.user = current_user
 
     if comment.save
@@ -16,9 +17,5 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:content)
-  end
-
-  def load_post
-    @post = Post.friendly.find(params[:post_id])
   end
 end

@@ -23,7 +23,7 @@ describe PostsController, type: :controller do
       let(:params) { { page: 2 } }
       it 'filter results' do
         # Kaminari.default_per_page is 5
-        expect(assigns(:posts).length).to eq(5)
+        expect(controller.posts.length).to eq(5)
       end
     end
   end
@@ -38,8 +38,8 @@ describe PostsController, type: :controller do
       expect(response).to render_template(:show)
     end
 
-    it 'assigns @post' do
-      expect(assigns(:post).id).to eq(post.id)
+    it 'check post variable' do
+      expect(controller.post.id).to eq(post.id)
     end
   end
 end

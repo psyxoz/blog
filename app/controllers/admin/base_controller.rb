@@ -4,6 +4,6 @@ class Admin::BaseController < ApplicationController
   before_filter :authenticate_user!, :require_admin
 
   def require_admin
-    raise CanCan::AccessDenied unless current_user.admin?
+    raise 'You are not authorized to access this page.' unless current_user.admin?
   end
 end

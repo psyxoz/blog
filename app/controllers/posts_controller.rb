@@ -1,11 +1,5 @@
 class PostsController < ApplicationController
   caches_page :index
-
-  def index
-    @posts = Post.page(params[:page])
-  end
-
-  def show
-    @post = Post.friendly.find(params[:id])
-  end
+  expose(:post, finder: :find_by_slug)
+  expose(:posts) { Post.page(params[:page]) }
 end

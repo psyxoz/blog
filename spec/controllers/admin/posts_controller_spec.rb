@@ -12,7 +12,7 @@ describe Admin::PostsController, type: :controller do
     before { get :index }
 
     it 'render posts list' do
-      expect(assigns(:posts).length).to eq(5)
+      expect(controller.posts.length).to eq(5)
       expect(response).to render_template(:index)
     end
   end
@@ -30,7 +30,7 @@ describe Admin::PostsController, type: :controller do
     before { get :edit, id: post.slug }
 
     it 'render post edit' do
-      expect(assigns(:post).id).to eq(post.id)
+      expect(controller.post.id).to eq(post.id)
       expect(response).to render_template(:edit)
     end
   end
@@ -54,7 +54,7 @@ describe Admin::PostsController, type: :controller do
 
     it 'render new post page' do
       expect(make_request).to render_template(expected_template)
-      expect(assigns(:post).valid?).to_not be_truthy
+      expect(controller.post.valid?).to_not be_truthy
     end
   end
 
