@@ -1,14 +1,10 @@
 SETUP & RUN
 ---------------
-`git clone git@github.com:psyxoz/blog.git`
-
-`cd blog && bundle install`
-
-`bundle exec rake db:setup`
-
-`bundle exec rails s`
-
-`open http://localhost:3000`
+* git clone git@github.com:psyxoz/blog.git
+* cd blog && bundle install
+* bundle exec rake db:setup
+* bundle exec rails s
+* open http://localhost:3000
 
 USED GEMS
 ---------------
