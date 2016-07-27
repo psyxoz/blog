@@ -6,6 +6,7 @@ SETUP & RUN
 * bundle exec rails s
 * open http://localhost:3000
 
+
 USED GEMS
 ---------------
 - Device (users authentication)
